@@ -20,26 +20,34 @@ using namespace std;
 // hard coded displaying to standard output.
 // Preconditions: NONE
 // Postconditions: BinTree remains unchanged.
-void BinTree::displaySideways() const {
-	sideways(root, 0);
-}
+// void BinTree::displaySideways() const {
+// 	sideways(oot, 0);
+// }
 
 //---------------------------- Sideways -------------------------------------
 // Helper method for displaySideways
 // Preconditions: NONE
 // Postconditions: BinTree remains unchanged.
-void BinTree::sideways(Node* current, int level) const 
-{
-	if (current != NULL) {
-		level++;
-		sideways(current->right, level);
+// void BinTree::sideways(Node* current, int level) const {
+// 	if (current != NULL) {
+// 		level++;
+// 		sideways(current->right, level);
 
-		// indent for readability, 4 spaces per depth level 
-		for (int i = level; i >= 0; i--) {
-			cout << "    ";
-		}
+// 		// indent for readability, 4 spaces per depth level 
+// 		for (int i = level; i >= 0; i--) {
+// 			cout << "    ";
+// 		}
 
-		cout << *current->data << endl;        // display information of object
-		sideways(current->left, level);
-	}
+// 		cout << *current->data << endl;        // display information of object
+// 		sideways(current->left, level);
+// 	}
+// }
+
+BinTree::BinTree() {
+	root = new Node();
+	root->data = new NodeData();
+}
+
+int main() {
+	return 0;
 }
