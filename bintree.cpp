@@ -48,6 +48,13 @@ BinTree::BinTree() {
 	root->data = new NodeData();
 }
 
+BinTree::~BinTree() {
+	// placeholder not finished, complicated
+	delete root;
+}
+
 int main() {
+	//test out test(int) / (int, int)
+	BinTree test1();
 	return 0;
 }
