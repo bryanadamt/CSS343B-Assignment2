@@ -52,8 +52,10 @@ BinTree::BinTree() {
 
 BinTree::BinTree(const BinTree &toCopy) {
 	root = new Node();
-	NodeData a = *(toCopy.root).data;
+	NodeData a = *(toCopy.root)->data;
 	// *(*toCopy.root).data
+	// *(toCopy.root->data)
+	// *(toCopy.root)->data
 	// root->data = new NodeData(toCopy.root.data)
 }
 
