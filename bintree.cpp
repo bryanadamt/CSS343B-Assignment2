@@ -46,15 +46,25 @@ using namespace std;
 BinTree::BinTree() {
 	root = new Node();
 	root->data = new NodeData();
+	root->left = nullptr;
+	root->right = nullptr;
+}
+
+BinTree::BinTree(const BinTree &toCopy) {
+	root = new Node();
+	NodeData a = *(toCopy.root).data;
+	// *(*toCopy.root).data
+	// root->data = new NodeData(toCopy.root.data)
 }
 
 BinTree::~BinTree() {
 	// placeholder not finished, complicated
+	// node data have to be deleted too
 	delete root;
 }
 
 int main() {
-	//test out test(int) / (int, int)
-	BinTree test1();
+	BinTree test;
+	BinTree a(test);
 	return 0;
 }

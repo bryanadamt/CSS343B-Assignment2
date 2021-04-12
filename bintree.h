@@ -19,7 +19,7 @@ using namespace std;
 class BinTree {				// you add class/method comments and assumptions
 public:
 	BinTree();								// constructor
-	BinTree(const BinTree &);				// copy constructor
+	BinTree(const BinTree &toCopy);				// copy constructor
 	~BinTree();								// destructor, calls makeEmpty	
 
 	bool isEmpty() const;					// true if tree is empty, otherwise false
