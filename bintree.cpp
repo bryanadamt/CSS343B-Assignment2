@@ -1,11 +1,11 @@
 // ------------------------------------------------ bintree.cpp --------------------------------------------------------
 // Bryan Adam Tjendra, CSS 343B
 // Created: 12/4/2021
-// Date of Last Modification: 
-// -------------------------------------------------------------------------------------------------------------------- 
-// Purpose - This project is to create a binary search tree class called 
+// Date of Last Modification:
+// --------------------------------------------------------------------------------------------------------------------
+// Purpose - This project is to create a binary search tree class called
 //           BinTree along with some additional functions (remove function is not required).
-// -------------------------------------------------------------------------------------------------------------------- 
+// --------------------------------------------------------------------------------------------------------------------
 // Notes on specifications, special algorithms, and assumptions.
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -33,7 +33,7 @@ using namespace std;
 // 		level++;
 // 		sideways(current->right, level);
 
-// 		// indent for readability, 4 spaces per depth level 
+// 		// indent for readability, 4 spaces per depth level
 // 		for (int i = level; i >= 0; i--) {
 // 			cout << "    ";
 // 		}
@@ -43,29 +43,35 @@ using namespace std;
 // 	}
 // }
 
-BinTree::BinTree() {
-	root = new Node();
-	root->data = new NodeData();
-	root->left = nullptr;
-	root->right = nullptr;
+BinTree::BinTree()
+{
+	root = NULL;
 }
 
-BinTree::BinTree(const BinTree &toCopy) {
-	root = new Node();
-	NodeData a = *(toCopy.root)->data;
-	// *(*toCopy.root).data
-	// *(toCopy.root->data)
-	// *(toCopy.root)->data
-	// root->data = new NodeData(toCopy.root.data)
+BinTree::BinTree(const BinTree &toCopy)
+{
+	root = NULL;
 }
 
-BinTree::~BinTree() {
+BinTree::~BinTree()
+{
 	// placeholder not finished, complicated
 	// node data have to be deleted too
 	delete root;
 }
 
-int main() {
+bool BinTree::retrieve(const NodeData &toFind, NodeData *&address) const
+{
+	retrieveHelper(toFind, address, root);
+	return true;
+}
+
+void BinTree::retrieveHelper(const NodeData &toFind, NodeData *&address, Node *curNode) const
+{
+}
+
+int main()
+{
 	BinTree test;
 	BinTree a(test);
 	return 0;
