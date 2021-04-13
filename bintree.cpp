@@ -60,6 +60,24 @@ BinTree::~BinTree()
 	delete root;
 }
 
+bool BinTree::isEmpty() const 
+{
+	return root == NULL;
+}
+
+void BinTree::makeEmpty() 
+{
+	makeEmptyHelper(root);
+}
+
+void BinTree::makeEmptyHelper(Node* curNode)
+{
+	if (curNode != NULL)
+	{
+		
+	}
+}
+
 bool BinTree::retrieve(const NodeData &toFind, NodeData *&address) const
 {
 	retrieveHelper(toFind, address, root);
@@ -68,11 +86,13 @@ bool BinTree::retrieve(const NodeData &toFind, NodeData *&address) const
 
 void BinTree::retrieveHelper(const NodeData &toFind, NodeData *&address, Node *curNode) const
 {
+	
 }
 
 int main()
 {
 	BinTree test;
 	BinTree a(test);
+	test.isEmpty();
 	return 0;
 }

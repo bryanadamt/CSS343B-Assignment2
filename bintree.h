@@ -16,7 +16,7 @@
 
 using namespace std;
 
-class BinTree
+class BinTree 
 { // you add class/method comments and assumptions
 public:
 	BinTree();						// constructor
@@ -47,6 +47,7 @@ private:
 	void sideways(Node *, int) const; // provided below, helper for displaySideways()
 
 	// retrieve helper
+	void makeEmptyHelper(Node *);
 	void retrieveHelper(const NodeData &, NodeData *&, Node *) const;
 };
 
