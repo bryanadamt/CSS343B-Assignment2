@@ -84,7 +84,20 @@ void BinTree::makeEmptyHelper(Node* curNode)
 
 BinTree& BinTree::operator=(const BinTree &toCopy)
 {
-	
+	if (toCopy.isEmpty())
+	{
+		makeEmpty();
+	} 
+	else if (this != &toCopy)
+	{
+		makeEmpty();
+		equalHelper(root, toCopy.root);
+	}
+	return *this;
+}
+
+void BinTree::equalHelper(Node* curr, Node* toCopy) const
+{
 }
 
 bool BinTree::retrieve(const NodeData &toFind, NodeData *&address) const
