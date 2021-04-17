@@ -72,7 +72,7 @@ void BinTree::makeEmpty()
 	makeEmptyHelper(root);
 }
 
-void BinTree::makeEmptyHelper(Node* curNode)
+void BinTree::makeEmptyHelper(Node*& curNode)
 {
 	if (curNode != NULL)
 	{
@@ -208,12 +208,6 @@ bool BinTree::insertHelper(Node*& curr, NodeData*& toInsert)
 
 // int main()
 // {
-// 	//BinTree a(test);
-
-// 	// if (test == a) {
-// 	// 	cout <<"asd" <<endl;
-// 	// }
-
 // 	BinTree T;
 // 	NodeData *a = new NodeData("a");
 // 	NodeData *b = new NodeData("b");
@@ -222,5 +216,6 @@ bool BinTree::insertHelper(Node*& curr, NodeData*& toInsert)
 // 	T.insert(a);
 // 	T.insert(c);
 // 	T.displaySideways();
-// 	//T.makeEmpty();
+// 	T.makeEmpty();
+// 	T.displaySideways();
 // }
