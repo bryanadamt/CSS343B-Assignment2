@@ -114,9 +114,7 @@ void buildTree(BinTree& T, ifstream& infile) {
 		NodeData* ptr = new NodeData(s);     // NodeData constructor takes string
 		// would do a setData if there were more than a string
 
-		cout << "check" <<endl;
 		bool success = T.insert(ptr);
-		cout << "check2" <<endl;
 		if (!success)
 			delete ptr;                       // duplicate case, not inserted 
 	}

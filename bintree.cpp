@@ -58,7 +58,6 @@ BinTree::BinTree(const BinTree &toCopy)
 
 BinTree::~BinTree()
 {
-	cout << "yaer" <<endl;
 	makeEmpty();
 }
 
@@ -80,6 +79,7 @@ void BinTree::makeEmptyHelper(Node*& curNode)
 		makeEmptyHelper(curNode->right);
 
 		delete curNode->data;
+		curNode->data = NULL;
 		delete curNode;
 		curNode = NULL;
 	}

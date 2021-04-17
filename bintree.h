@@ -49,7 +49,7 @@ private:
 	void sideways(Node *, int) const; // provided below, helper for displaySideways()
 
 	// Helper Functions
-	void makeEmptyHelper(Node *);
+	void makeEmptyHelper(Node *&);
 	void assignHelper(Node *, Node *) const;
 	bool equalityHelper(const Node *, const Node *) const;
 	void outHelper(const Node*) const;
