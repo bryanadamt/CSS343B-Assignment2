@@ -80,7 +80,6 @@ void BinTree::makeEmptyHelper(Node* curNode)
 		makeEmptyHelper(curNode->right);
 
 		delete curNode->data;
-		curNode->data = NULL;
 		delete curNode;
 		curNode = NULL;
 	}
@@ -215,10 +214,13 @@ bool BinTree::insertHelper(Node*& curr, NodeData*& toInsert)
 // 	// 	cout <<"asd" <<endl;
 // 	// }
 
-// 	BinTree test;
+// 	BinTree T;
 // 	NodeData *a = new NodeData("a");
 // 	NodeData *b = new NodeData("b");
-// 	test.insert(a);
-// 	test.insert(b);
-// 	cout << test;
+// 	NodeData *c = new NodeData("c");
+// 	T.insert(b);
+// 	T.insert(a);
+// 	T.insert(c);
+// 	T.displaySideways();
+// 	//T.makeEmpty();
 // }
