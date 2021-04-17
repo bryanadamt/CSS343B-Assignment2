@@ -49,6 +49,7 @@ private:
 	// retrieve helper
 	void makeEmptyHelper(Node *);
 	void assignHelper(Node *, Node *) const;
+	bool equalityHelper(const Node *, const Node *) const;
 	void retrieveHelper(const NodeData &, NodeData *&, Node *) const;
 };
 

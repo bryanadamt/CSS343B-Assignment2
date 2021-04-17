@@ -51,13 +51,14 @@ BinTree::BinTree()
 
 BinTree::BinTree(const BinTree &toCopy)
 {
-	// *this = toCopy;
 	root = NULL;
-	if (root != toCopy.root && toCopy.root != NULL)
-	{
-		makeEmpty();
-		assignHelper(root, toCopy.root);
-	}
+	*this = toCopy;
+	
+	// if (root != toCopy.root && toCopy.root != NULL)
+	// {
+	// 	makeEmpty();
+	// 	assignHelper(root, toCopy.root);
+	// }
 }
 
 BinTree::~BinTree()
@@ -73,10 +74,7 @@ bool BinTree::isEmpty() const
 
 void BinTree::makeEmpty() 
 {
-	if (root != NULL)
-	{
-		makeEmptyHelper(root);
-	}
+	makeEmptyHelper(root);
 }
 
 void BinTree::makeEmptyHelper(Node* curNode)
@@ -120,6 +118,32 @@ void BinTree::assignHelper(Node* curr, Node* toCopy) const
 	}
 }
 
+bool BinTree::operator==(const BinTree &toCopy) const {
+	return equalityHelper(root, toCopy.root);
+}
+
+bool BinTree::equalityHelper(const Node* curr, const Node* toCompare) const {
+	if (root == NULL && toCopy.root == NULL)
+	{
+		return true;
+	}
+
+	// Checks if one of the Node is NULL, since we checked that both are not NULL
+	if (root == NULL || toCopy.root == NULL)
+	{
+		return false;
+	}
+
+	// Compare data
+	if (*curr->data != *toCompare->data)
+	{
+		return false;
+	}
+
+	// If it reaches this line, means that the data are the same, so check left and right children
+	return (equalityHelper(curr->left, toCompare->left) && equalityHelper(curr->right, toCompare->right));
+}
+
 bool BinTree::retrieve(const NodeData &toFind, NodeData *&address) const
 {
 	retrieveHelper(toFind, address, root);
@@ -134,10 +158,9 @@ void BinTree::retrieveHelper(const NodeData &toFind, NodeData *&address, Node *c
 int main()
 {
 	BinTree test;
-
-	// if (test.isEmpty()) {
-	// 	cout <<"asd" <<endl;
-	// }
-
 	BinTree a(test);
+
+	if (test == a) {
+		cout <<"asd" <<endl;
+	}
 }
