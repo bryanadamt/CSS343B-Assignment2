@@ -41,8 +41,8 @@ int main() {
 	NodeData tND("t");
 
 	BinTree T, T2, dup;
-	NodeData* ndArray[ARRAYSIZE];
-	initArray(ndArray);
+	// NodeData* ndArray[ARRAYSIZE];
+	// initArray(ndArray);
 	cout << "Initial data:" << endl << "  ";
 	buildTree(T, infile);              // builds and displays initial data
 	cout << endl;
@@ -83,7 +83,7 @@ int main() {
 		T.displaySideways();
 
 		T.makeEmpty();                  // empty out the tree
-		initArray(ndArray);             // empty out the array
+		// initArray(ndArray);             // empty out the array
 
 		cout << "---------------------------------------------------------------"
 			<< endl;

@@ -206,16 +206,16 @@ bool BinTree::insertHelper(Node*& curr, NodeData*& toInsert)
 	
 // }
 
-// int main()
-// {
-// 	BinTree T;
-// 	NodeData *a = new NodeData("a");
-// 	NodeData *b = new NodeData("b");
-// 	NodeData *c = new NodeData("c");
-// 	T.insert(b);
-// 	T.insert(a);
-// 	T.insert(c);
-// 	T.displaySideways();
-// 	T.makeEmpty();
-// 	T.displaySideways();
-// }
+int main()
+{
+	BinTree T;
+	NodeData *a = new NodeData("a");
+	NodeData *b = new NodeData("b");
+	NodeData *c = new NodeData("c");
+	T.insert(b);
+	T.insert(a);
+	T.insert(c);
+	T.displaySideways();
+	T.makeEmpty();
+	T.displaySideways();
+}
