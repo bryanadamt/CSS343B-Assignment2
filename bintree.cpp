@@ -13,7 +13,6 @@
 #include "nodedata.h"
 
 #include <iostream>
-#include <fstream>
 
 using namespace std;
 
@@ -22,28 +21,28 @@ using namespace std;
 // hard coded displaying to standard output.
 // Preconditions: NONE
 // Postconditions: BinTree remains unchanged.
-// void BinTree::displaySideways() const {
-// 	sideways(oot, 0);
-// }
+void BinTree::displaySideways() const {
+	sideways(root, 0);
+}
 
 //---------------------------- Sideways -------------------------------------
 // Helper method for displaySideways
 // Preconditions: NONE
 // Postconditions: BinTree remains unchanged.
-// void BinTree::sideways(Node* current, int level) const {
-// 	if (current != NULL) {
-// 		level++;
-// 		sideways(current->right, level);
+void BinTree::sideways(Node* current, int level) const {
+	if (current != NULL) {
+		level++;
+		sideways(current->right, level);
 
-// 		// indent for readability, 4 spaces per depth level
-// 		for (int i = level; i >= 0; i--) {
-// 			cout << "    ";
-// 		}
+		// indent for readability, 4 spaces per depth level
+		for (int i = level; i >= 0; i--) {
+			cout << "    ";
+		}
 
-// 		cout << *current->data << endl;        // display information of object
-// 		sideways(current->left, level);
-// 	}
-// }
+		cout << *current->data << endl;        // display information of object
+		sideways(current->left, level);
+	}
+}
 
 BinTree::BinTree()
 {
@@ -52,12 +51,19 @@ BinTree::BinTree()
 
 BinTree::BinTree(const BinTree &toCopy)
 {
-	
+	// *this = toCopy;
+	root = NULL;
+	if (root != toCopy.root && toCopy.root != NULL)
+	{
+		makeEmpty();
+		assignHelper(root, toCopy.root);
+	}
 }
 
 BinTree::~BinTree()
 {
-	makeEmpty(); //?
+	cout << "yaer" <<endl;
+	makeEmpty();
 }
 
 bool BinTree::isEmpty() const 
@@ -67,7 +73,10 @@ bool BinTree::isEmpty() const
 
 void BinTree::makeEmpty() 
 {
-	makeEmptyHelper(root);
+	if (root != NULL)
+	{
+		makeEmptyHelper(root);
+	}
 }
 
 void BinTree::makeEmptyHelper(Node* curNode)
@@ -78,17 +87,13 @@ void BinTree::makeEmptyHelper(Node* curNode)
 		makeEmptyHelper(curNode->right);
 		delete curNode->data;
 		delete curNode;
-		// curNode =Null etc etc
+		curNode = NULL;
 	}
 }
 
 BinTree& BinTree::operator=(const BinTree &toCopy)
 {
-	if (toCopy.isEmpty()) //
-	{
-		makeEmpty();
-	} 
-	else if (this != &toCopy)
+	if (root != toCopy.root)
 	{
 		makeEmpty();
 		assignHelper(root, toCopy.root);
@@ -111,7 +116,7 @@ void BinTree::assignHelper(Node* curr, Node* toCopy) const
 	else 
 	{
 		// delete curr->data;
-		curr == NULL;
+		curr = NULL;
 	}
 }
 
@@ -129,10 +134,10 @@ void BinTree::retrieveHelper(const NodeData &toFind, NodeData *&address, Node *c
 int main()
 {
 	BinTree test;
+
+	// if (test.isEmpty()) {
+	// 	cout <<"asd" <<endl;
+	// }
+
 	BinTree a(test);
-	test.makeEmpty();
-	if (test.isEmpty()) {
-		cout <<"asd" <<endl;
-	}
-	return 0;
 }
