@@ -154,8 +154,34 @@ bool BinTree::equalityHelper(const Node* curr, const Node* toCompare) const
 	return (equalityHelper(curr->left, toCompare->left) && equalityHelper(curr->right, toCompare->right));
 }
 
-bool BinTree::insert(NodeData* toInsert) {
-	
+bool BinTree::insert(NodeData* toInsert) 
+{
+	return insertHelper(root, toInsert);
+}
+
+bool BinTree::insertHelper(Node* curr, NodeData* toInsert) 
+{
+	if (curr == NULL)
+	{
+		Node *newNode = new Node;
+		newNode->data = toInsert;
+		curr = newNode;
+		return true;
+	}
+
+	if (curr->data == toInsert)
+	{
+		return false;
+	}
+	else if (curr->data < toInsert) 
+	{
+		insertHelper(curr->left, toInsert);
+	}
+	else if (curr->data > toInsert)
+	{
+		insertHelper(curr->right, toInsert);
+	}
+	return true;
 }
 
 // bool BinTree::retrieve(const NodeData &toFind, NodeData *&address) const

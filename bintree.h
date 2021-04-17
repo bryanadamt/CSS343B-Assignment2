@@ -50,6 +50,7 @@ private:
 	void makeEmptyHelper(Node *);
 	void assignHelper(Node *, Node *) const;
 	bool equalityHelper(const Node *, const Node *) const;
+	bool insertHelper(Node *, NodeData *);
 	void retrieveHelper(const NodeData &, NodeData *&, Node *) const;
 };
 
