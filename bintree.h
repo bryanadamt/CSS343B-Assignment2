@@ -26,7 +26,7 @@ public:
 	bool isEmpty() const; // true if tree is empty, otherwise false
 	void makeEmpty();	  // make the tree empty so isEmpty returns true
 
-	BinTree &operator=(const BinTree &);
+	BinTree& operator=(const BinTree &);
 	bool operator==(const BinTree &) const;
 	bool operator!=(const BinTree &) const;
 
