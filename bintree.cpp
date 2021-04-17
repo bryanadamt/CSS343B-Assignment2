@@ -154,8 +154,28 @@ bool BinTree::equalityHelper(const Node* curr, const Node* toCompare) const
 	return (equalityHelper(curr->left, toCompare->left) && equalityHelper(curr->right, toCompare->right));
 }
 
+ostream& operator<<(ostream& out, const BinTree& toPrint)
+{
+	toPrint.outHelper(toPrint.root);
+	out << endl;
+	return out;
+}
+
+void BinTree::outHelper(const Node* curr) const
+{
+	if (curr != NULL)
+	{
+		outHelper(curr->left);
+		cout << *curr->data << " ";
+		outHelper(curr->right);
+	}
+}
+
 bool BinTree::insert(NodeData* toInsert) 
 {
+	if (root == NULL) {
+		cout << "failure" <<endl;
+	}
 	return insertHelper(root, toInsert);
 }
 
@@ -165,20 +185,25 @@ bool BinTree::insertHelper(Node* curr, NodeData* toInsert)
 	{
 		Node *newNode = new Node;
 		newNode->data = toInsert;
+		newNode->left = NULL;
+		newNode->right = NULL;
 		curr = newNode;
+		cout << " 1 " <<endl;
 		return true;
 	}
-
-	if (curr->data == toInsert)
+	else if (curr->data == toInsert)
 	{
+		cout << " 2 " <<endl;
 		return false;
 	}
 	else if (curr->data < toInsert) 
 	{
+		cout << " 3 " <<endl;
 		insertHelper(curr->left, toInsert);
 	}
 	else if (curr->data > toInsert)
 	{
+		cout << " 4 " <<endl;
 		insertHelper(curr->right, toInsert);
 	}
 	return true;

@@ -49,7 +49,7 @@ int main() {
 	BinTree first(T);                  // test copy constructor
 	dup = dup = T;                     // test operator=, self-assignment
 	while (!infile.eof()) {
-		// cout << "Tree Inorder:" << endl << T;             // operator<< does endl
+		cout << "Tree Inorder:" << endl << T;             // operator<< does endl
 		T.displaySideways();
 
 		// // test retrieve 
@@ -80,10 +80,10 @@ int main() {
 		// // somewhat test bstreeToArray and arrayToBSTree
 		// T.bstreeToArray(ndArray);
 		// T.arrayToBSTree(ndArray);
-		// T.displaySideways();
+		T.displaySideways();
 
-		// T.makeEmpty();                  // empty out the tree
-		// initArray(ndArray);             // empty out the array
+		T.makeEmpty();                  // empty out the tree
+		initArray(ndArray);             // empty out the array
 
 		cout << "---------------------------------------------------------------"
 			<< endl;

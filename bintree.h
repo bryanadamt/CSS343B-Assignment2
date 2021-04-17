@@ -17,7 +17,9 @@
 using namespace std;
 
 class BinTree 
-{ // you add class/method comments and assumptions
+{
+	friend ostream& operator<<(ostream& out, const BinTree& toPrint);
+
 public:
 	BinTree();						// constructor
 	BinTree(const BinTree &toCopy); // copy constructor
@@ -50,6 +52,7 @@ private:
 	void makeEmptyHelper(Node *);
 	void assignHelper(Node *, Node *) const;
 	bool equalityHelper(const Node *, const Node *) const;
+	void outHelper(const Node*) const;
 	bool insertHelper(Node *, NodeData *);
 	void retrieveHelper(const NodeData &, NodeData *&, Node *) const;
 };
