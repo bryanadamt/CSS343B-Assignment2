@@ -53,14 +53,7 @@ BinTree::BinTree()
 
 BinTree::BinTree(const BinTree &toCopy)
 {
-	root = NULL;
 	*this = toCopy;
-	
-	// if (root != toCopy.root && toCopy.root != NULL)
-	// {
-	// 	makeEmpty();
-	// 	assignHelper(root, toCopy.root);
-	// }
 }
 
 BinTree::~BinTree()
@@ -85,7 +78,9 @@ void BinTree::makeEmptyHelper(Node* curNode)
 	{
 		makeEmptyHelper(curNode->left);
 		makeEmptyHelper(curNode->right);
+
 		delete curNode->data;
+		curNode->data = NULL;
 		delete curNode;
 		curNode = NULL;
 	}
@@ -173,35 +168,31 @@ void BinTree::outHelper(const Node* curr) const
 
 bool BinTree::insert(NodeData* toInsert) 
 {
-	if (root == NULL) {
-		cout << "failure" <<endl;
-	}
 	return insertHelper(root, toInsert);
 }
 
-bool BinTree::insertHelper(Node* curr, NodeData* toInsert) 
+bool BinTree::insertHelper(Node*& curr, NodeData*& toInsert) 
 {
 	if (curr == NULL)
 	{
-		Node *newNode = new Node;
-		newNode->data = toInsert;
-		newNode->left = NULL;
-		newNode->right = NULL;
-		curr = newNode;
+		curr = new Node;
+		curr->data = toInsert;
+		curr->left = NULL;
+		curr->right = NULL;
 		cout << " 1 " <<endl;
 		return true;
 	}
-	else if (curr->data == toInsert)
+	else if (*curr->data == *toInsert)
 	{
 		cout << " 2 " <<endl;
 		return false;
 	}
-	else if (curr->data < toInsert) 
+	else if (*curr->data > *toInsert) 
 	{
 		cout << " 3 " <<endl;
 		insertHelper(curr->left, toInsert);
 	}
-	else if (curr->data > toInsert)
+	else if (*curr->data < *toInsert)
 	{
 		cout << " 4 " <<endl;
 		insertHelper(curr->right, toInsert);
@@ -222,10 +213,16 @@ bool BinTree::insertHelper(Node* curr, NodeData* toInsert)
 
 // int main()
 // {
-// 	BinTree test;
-// 	BinTree a(test);
+// 	//BinTree a(test);
 
-// 	if (test == a) {
-// 		cout <<"asd" <<endl;
-// 	}
+// 	// if (test == a) {
+// 	// 	cout <<"asd" <<endl;
+// 	// }
+
+// 	BinTree test;
+// 	NodeData *a = new NodeData("a");
+// 	NodeData *b = new NodeData("b");
+// 	test.insert(a);
+// 	test.insert(b);
+// 	cout << test;
 // }

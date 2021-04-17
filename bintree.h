@@ -53,7 +53,7 @@ private:
 	void assignHelper(Node *, Node *) const;
 	bool equalityHelper(const Node *, const Node *) const;
 	void outHelper(const Node*) const;
-	bool insertHelper(Node *, NodeData *);
+	bool insertHelper(Node *&, NodeData *&);
 	void retrieveHelper(const NodeData &, NodeData *&, Node *) const;
 };
 
