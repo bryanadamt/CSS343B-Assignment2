@@ -84,20 +84,35 @@ void BinTree::makeEmptyHelper(Node* curNode)
 
 BinTree& BinTree::operator=(const BinTree &toCopy)
 {
-	if (toCopy.isEmpty())
+	if (toCopy.isEmpty()) //
 	{
 		makeEmpty();
 	} 
 	else if (this != &toCopy)
 	{
 		makeEmpty();
-		equalHelper(root, toCopy.root);
+		assignHelper(root, toCopy.root);
 	}
 	return *this;
 }
 
-void BinTree::equalHelper(Node* curr, Node* toCopy) const
+void BinTree::assignHelper(Node* curr, Node* toCopy) const
 {
+	if (toCopy != NULL)
+	{
+		Node *clone = new Node;
+		NodeData *cloneND = new NodeData(*toCopy->data);
+		clone->data = cloneND;
+		curr = clone;
+
+		assignHelper(curr->left, toCopy->left);
+		assignHelper(curr->right, toCopy->right);
+	}
+	else 
+	{
+		// delete curr->data;
+		curr == NULL;
+	}
 }
 
 bool BinTree::retrieve(const NodeData &toFind, NodeData *&address) const

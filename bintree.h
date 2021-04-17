@@ -48,7 +48,7 @@ private:
 
 	// retrieve helper
 	void makeEmptyHelper(Node *);
-	void equalHelper(Node *, Node *) const;
+	void assignHelper(Node *, Node *) const;
 	void retrieveHelper(const NodeData &, NodeData *&, Node *) const;
 };
 
