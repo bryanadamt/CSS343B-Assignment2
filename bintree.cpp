@@ -21,7 +21,8 @@ using namespace std;
 // hard coded displaying to standard output.
 // Preconditions: NONE
 // Postconditions: BinTree remains unchanged.
-void BinTree::displaySideways() const {
+void BinTree::displaySideways() const 
+{
 	sideways(root, 0);
 }
 
@@ -29,7 +30,8 @@ void BinTree::displaySideways() const {
 // Helper method for displaySideways
 // Preconditions: NONE
 // Postconditions: BinTree remains unchanged.
-void BinTree::sideways(Node* current, int level) const {
+void BinTree::sideways(Node* current, int level) const 
+{
 	if (current != NULL) {
 		level++;
 		sideways(current->right, level);
@@ -118,18 +120,26 @@ void BinTree::assignHelper(Node* curr, Node* toCopy) const
 	}
 }
 
-bool BinTree::operator==(const BinTree &toCopy) const {
+bool BinTree::operator==(const BinTree &toCopy) const 
+{
 	return equalityHelper(root, toCopy.root);
 }
 
-bool BinTree::equalityHelper(const Node* curr, const Node* toCompare) const {
-	if (root == NULL && toCopy.root == NULL)
+bool BinTree::operator!=(const BinTree &toCopy) const 
+{
+	return !equalityHelper(root, toCopy.root);
+}
+
+bool BinTree::equalityHelper(const Node* curr, const Node* toCompare) const 
+{
+	if (curr == NULL && toCompare == NULL)
 	{
 		return true;
 	}
 
 	// Checks if one of the Node is NULL, since we checked that both are not NULL
-	if (root == NULL || toCopy.root == NULL)
+	// This will also make sure that there is data to be compared
+	if (curr == NULL || toCompare == NULL)
 	{
 		return false;
 	}
@@ -144,23 +154,27 @@ bool BinTree::equalityHelper(const Node* curr, const Node* toCompare) const {
 	return (equalityHelper(curr->left, toCompare->left) && equalityHelper(curr->right, toCompare->right));
 }
 
-bool BinTree::retrieve(const NodeData &toFind, NodeData *&address) const
-{
-	retrieveHelper(toFind, address, root);
-	return true;
-}
-
-void BinTree::retrieveHelper(const NodeData &toFind, NodeData *&address, Node *curNode) const
-{
+bool BinTree::insert(NodeData* toInsert) {
 	
 }
 
-int main()
-{
-	BinTree test;
-	BinTree a(test);
+// bool BinTree::retrieve(const NodeData &toFind, NodeData *&address) const
+// {
+// 	retrieveHelper(toFind, address, root);
+// 	return true;
+// }
 
-	if (test == a) {
-		cout <<"asd" <<endl;
-	}
-}
+// void BinTree::retrieveHelper(const NodeData &toFind, NodeData *&address, Node *curNode) const
+// {
+	
+// }
+
+// int main()
+// {
+// 	BinTree test;
+// 	BinTree a(test);
+
+// 	if (test == a) {
+// 		cout <<"asd" <<endl;
+// 	}
+// }

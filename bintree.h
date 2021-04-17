@@ -46,7 +46,7 @@ private:
 	// void inorderHelper( ... ) const;
 	void sideways(Node *, int) const; // provided below, helper for displaySideways()
 
-	// retrieve helper
+	// Helper Functions
 	void makeEmptyHelper(Node *);
 	void assignHelper(Node *, Node *) const;
 	bool equalityHelper(const Node *, const Node *) const;
