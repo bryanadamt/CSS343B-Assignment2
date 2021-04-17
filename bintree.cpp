@@ -11,7 +11,9 @@
 
 #include "bintree.h"
 #include "nodedata.h"
+
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -50,14 +52,12 @@ BinTree::BinTree()
 
 BinTree::BinTree(const BinTree &toCopy)
 {
-	root = NULL;
+	
 }
 
 BinTree::~BinTree()
 {
-	// placeholder not finished, complicated
-	// node data have to be deleted too
-	delete root;
+	makeEmpty(); //?
 }
 
 bool BinTree::isEmpty() const 
@@ -74,8 +74,17 @@ void BinTree::makeEmptyHelper(Node* curNode)
 {
 	if (curNode != NULL)
 	{
-		
+		makeEmptyHelper(curNode->left);
+		makeEmptyHelper(curNode->right);
+		delete curNode->data;
+		delete curNode;
+		// curNode =Null etc etc
 	}
+}
+
+BinTree& BinTree::operator=(const BinTree &toCopy)
+{
+	
 }
 
 bool BinTree::retrieve(const NodeData &toFind, NodeData *&address) const
@@ -93,6 +102,9 @@ int main()
 {
 	BinTree test;
 	BinTree a(test);
-	test.isEmpty();
+	test.makeEmpty();
+	if (test.isEmpty()) {
+		cout <<"asd" <<endl;
+	}
 	return 0;
 }
