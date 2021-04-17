@@ -179,22 +179,18 @@ bool BinTree::insertHelper(Node*& curr, NodeData*& toInsert)
 		curr->data = toInsert;
 		curr->left = NULL;
 		curr->right = NULL;
-		cout << " 1 " <<endl;
 		return true;
 	}
 	else if (*curr->data == *toInsert)
 	{
-		cout << " 2 " <<endl;
 		return false;
 	}
 	else if (*curr->data > *toInsert) 
 	{
-		cout << " 3 " <<endl;
 		insertHelper(curr->left, toInsert);
 	}
 	else if (*curr->data < *toInsert)
 	{
-		cout << " 4 " <<endl;
 		insertHelper(curr->right, toInsert);
 	}
 	return true;
