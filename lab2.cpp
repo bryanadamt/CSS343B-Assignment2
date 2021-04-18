@@ -52,15 +52,15 @@ int main() {
 		cout << "Tree Inorder:" << endl << T;             // operator<< does endl
 		T.displaySideways();
 
-		// // test retrieve 
-		// NodeData* p;                    // pointer of retrieved object
-		// bool found;                     // whether or not object was found in tree
-		// found = T.retrieve(andND, p);
-		// cout << "Retrieve --> and:  " << (found ? "found" : "not found") << endl;
-		// found = T.retrieve(notND, p);
-		// cout << "Retrieve --> not:  " << (found ? "found" : "not found") << endl;
-		// found = T.retrieve(sssND, p);
-		// cout << "Retrieve --> sss:  " << (found ? "found" : "not found") << endl;
+		// test retrieve 
+		NodeData* p;                    // pointer of retrieved object
+		bool found;                     // whether or not object was found in tree
+		found = T.retrieve(andND, p);
+		cout << "Retrieve --> and:  " << (found ? "found" : "not found") << endl;
+		found = T.retrieve(notND, p);
+		cout << "Retrieve --> not:  " << (found ? "found" : "not found") << endl;
+		found = T.retrieve(sssND, p);
+		cout << "Retrieve --> sss:  " << (found ? "found" : "not found") << endl;
 
 		// // test getHeight 
 		// cout << "Height    --> and:  " << T.getHeight(andND) << endl;

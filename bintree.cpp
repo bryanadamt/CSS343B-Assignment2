@@ -195,16 +195,29 @@ bool BinTree::insertHelper(Node*& curr, NodeData*& toInsert)
 	return true;
 }
 
-// bool BinTree::retrieve(const NodeData &toFind, NodeData *&address) const
-// {
-// 	retrieveHelper(toFind, address, root);
-// 	return true;
-// }
+bool BinTree::retrieve(const NodeData &toFind, NodeData *&address) const
+{
+	retrieveHelper(toFind, address, root);
+	return (address != NULL);
+}
 
-// void BinTree::retrieveHelper(const NodeData &toFind, NodeData *&address, Node *curNode) const
-// {
-	
-// }
+void BinTree::retrieveHelper(const NodeData &toFind, NodeData *&address, Node *curr) const
+{
+	if (curr != NULL) {
+		if (*curr->data == toFind)
+		{
+			address = curr->data;
+		}
+		else if (*curr->data < toFind)
+		{
+			retrieveHelper(toFind, address, curr->right);
+		}
+		else 
+		{
+			retrieveHelper(toFind, address, curr->left);
+		}
+	}
+}
 
 // int main()
 // {
@@ -217,4 +230,10 @@ bool BinTree::insertHelper(Node*& curr, NodeData*& toInsert)
 // 	T.insert(c);
 
 // 	T.displaySideways();
+
+// 	NodeData *temp;
+// 	NodeData ace("c");
+// 	if (T.retrieve(ace, temp)) {
+// 		cout << *temp <<endl;
+// 	}
 // }
