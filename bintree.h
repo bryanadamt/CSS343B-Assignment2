@@ -36,6 +36,9 @@ public:
 	bool retrieve(const NodeData &, NodeData *&) const;
 	void displaySideways() const; // provided below, displays the tree sideways
 	int getHeight(const NodeData &) const;
+
+	void bstreeToArray(NodeData* []);
+	void arrayToBSTree(NodeData* []);
 private:
 	struct Node
 	{
@@ -46,7 +49,6 @@ private:
 	Node *root; // root of the tree
 
 	// utility functions
-	// void inorderHelper( ... ) const;
 	void sideways(Node *, int) const; // provided below, helper for displaySideways()
 
 	// Helper Functions
@@ -56,8 +58,9 @@ private:
 	void outHelper(const Node*) const;
 	bool insertHelper(Node *&, NodeData *&);
 	void retrieveHelper(const NodeData &, NodeData *&, Node *) const;
-	void nodeFinder(Node*, const NodeData* , Node *&) const;
+	void nodeFinder(Node *, const NodeData * , Node *&) const;
 	int getHeightHelper(const Node *) const;
+	int toArrayHelper(Node *, NodeData* []);
 };
 
 #endif

@@ -271,32 +271,42 @@ int BinTree::getHeightHelper(const Node *goal) const
 	return maxRight + 1;
 }
 
-// int main()
-// {
-// 	BinTree T, TA, TB;
-// 	NodeData *a = new NodeData("a");
-// 	NodeData *b = new NodeData("b");
-// 	NodeData *c = new NodeData("c");
-// 	NodeData *d = new NodeData("d");
-// 	NodeData *e = new NodeData("e");
-// 	NodeData *f = new NodeData("f");
+void BinTree::bstreeToArray(NodeData* ndArray[]) 
+{
+	toArrayHelper(root, ndArray);
+	makeEmpty();
+}
 
-// 	T.insert(e);
-// 	T.insert(f);
-// 	T.insert(c);
-// 	T.insert(d);
-// 	T.insert(b);
-// 	T.insert(a);
-// 	cout << T << endl;
+int BinTree::toArrayHelper(Node* curr, NodeData* ndArray[])
+{
+	if (curr != NULL)
+	{
+		toArrayHelper(curr->left);
+		ndArray[0] = curr->data;
+		toArrayHelper(curr->right);
+	}
+}
 
-// 	T.displaySideways();
+int main()
+{
+	BinTree T, TA, TB;
+	NodeData *a = new NodeData("a");
+	NodeData *b = new NodeData("b");
+	NodeData *c = new NodeData("c");
+	NodeData *d = new NodeData("d");
+	NodeData *e = new NodeData("e");
+	NodeData *f = new NodeData("f");
 
-// 	NodeData *temp;
-// 	NodeData ace("c");
+	T.insert(e);
+	T.insert(f);
+	T.insert(c);
+	T.insert(d);
+	T.insert(b);
+	T.insert(a);
+	cout << T << endl;
 
-// 	cout << T.getHeight(ace) << endl;;
+	T.displaySideways();
 
-// 	// if (T.retrieve(ace, temp)) {
-// 	// 	cout << *temp <<endl;
-// 	// }
-// }
+	NodeData *temp;
+	NodeData ace("c");
+}
