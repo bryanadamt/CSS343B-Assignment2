@@ -216,6 +216,10 @@ void BinTree::retrieveHelper(const NodeData &toFind, NodeData *&address, Node *c
 		{
 			retrieveHelper(toFind, address, curr->left);
 		}
+	} 
+	else 
+	{
+		address = NULL;
 	}
 }
 
