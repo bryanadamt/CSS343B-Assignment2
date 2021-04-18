@@ -231,12 +231,34 @@ int BinTree::getHeight(const NodeData &nodeToFind) const
 		// Node not found so height is 0;
 		return 0;
 	}
-	int height = getHeightHelper(address);
-	return height;
+	Node *goal = NULL;
+	nodeFinder(root, address, goal);
+	cout << *goal->data << " 1ye "<< endl;
+	return getHeightHelper(goal);
 }
 
-int BinTree::getHeightHelper(const NodeData *address) const
+void BinTree::nodeFinder(Node* curr, const NodeData* address, Node*& goal) const
 {
+	if (goal == NULL)
+	{
+		if (*curr->data == *address)
+		{
+			goal = curr;
+		} 
+		else if (*curr->data < *address)
+		{
+			nodeFinder(curr->right, address, goal);
+		}
+		else 
+		{
+			nodeFinder(curr->left, address, goal);	
+		}
+	}
+}
+
+int BinTree::getHeightHelper(const Node *goal) const
+{
+	
 	return 0;
 }
 
@@ -246,14 +268,26 @@ int main()
 	NodeData *a = new NodeData("a");
 	NodeData *b = new NodeData("b");
 	NodeData *c = new NodeData("c");
+	NodeData *d = new NodeData("d");
+	NodeData *e = new NodeData("e");
+	NodeData *f = new NodeData("f");
+
+	T.insert(d);
 	T.insert(b);
-	T.insert(a);
 	T.insert(c);
+	T.insert(a);
+	T.insert(e);
+	T.insert(f);
+
+	cout << T << endl;
 
 	T.displaySideways();
 
-	// NodeData *temp;
-	// NodeData ace("c");
+	NodeData *temp;
+	NodeData ace("d");
+
+	T.getHeight(ace);
+
 	// if (T.retrieve(ace, temp)) {
 	// 	cout << *temp <<endl;
 	// }

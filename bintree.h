@@ -56,7 +56,8 @@ private:
 	void outHelper(const Node*) const;
 	bool insertHelper(Node *&, NodeData *&);
 	void retrieveHelper(const NodeData &, NodeData *&, Node *) const;
-	int getHeightHelper(const NodeData *) const;
+	void nodeFinder(Node*, const NodeData* , Node *&) const;
+	int getHeightHelper(const Node *) const;
 };
 
 #endif
