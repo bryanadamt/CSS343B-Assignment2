@@ -223,21 +223,38 @@ void BinTree::retrieveHelper(const NodeData &toFind, NodeData *&address, Node *c
 	}
 }
 
-// int main()
-// {
-// 	BinTree T, TA, TB;
-// 	NodeData *a = new NodeData("a");
-// 	NodeData *b = new NodeData("b");
-// 	NodeData *c = new NodeData("c");
-// 	T.insert(b);
-// 	T.insert(a);
-// 	T.insert(c);
+int BinTree::getHeight(const NodeData &nodeToFind) const 
+{
+	NodeData *address;
+	if (!retrieve(nodeToFind, address))
+	{
+		// Node not found so height is 0;
+		return 0;
+	}
+	int height = getHeightHelper(address);
+	return height;
+}
 
-// 	T.displaySideways();
+int BinTree::getHeightHelper(const NodeData *address) const
+{
+	return 0;
+}
 
-// 	NodeData *temp;
-// 	NodeData ace("c");
-// 	if (T.retrieve(ace, temp)) {
-// 		cout << *temp <<endl;
-// 	}
-// }
+int main()
+{
+	BinTree T, TA, TB;
+	NodeData *a = new NodeData("a");
+	NodeData *b = new NodeData("b");
+	NodeData *c = new NodeData("c");
+	T.insert(b);
+	T.insert(a);
+	T.insert(c);
+
+	T.displaySideways();
+
+	// NodeData *temp;
+	// NodeData ace("c");
+	// if (T.retrieve(ace, temp)) {
+	// 	cout << *temp <<endl;
+	// }
+}

@@ -35,6 +35,7 @@ public:
 	bool insert(NodeData *);
 	bool retrieve(const NodeData &, NodeData *&) const;
 	void displaySideways() const; // provided below, displays the tree sideways
+	int getHeight(const NodeData &) const;
 private:
 	struct Node
 	{
@@ -55,6 +56,7 @@ private:
 	void outHelper(const Node*) const;
 	bool insertHelper(Node *&, NodeData *&);
 	void retrieveHelper(const NodeData &, NodeData *&, Node *) const;
+	int getHeightHelper(const NodeData *) const;
 };
 
 #endif
