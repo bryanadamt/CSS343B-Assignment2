@@ -50,7 +50,7 @@ private:
 
 	// Helper Functions
 	void makeEmptyHelper(Node *&);
-	void assignHelper(Node *, Node *) const;
+	void assignHelper(Node *&, Node *) const;
 	bool equalityHelper(const Node *, const Node *) const;
 	void outHelper(const Node*) const;
 	bool insertHelper(Node *&, NodeData *&);
