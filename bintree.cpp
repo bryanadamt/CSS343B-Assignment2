@@ -261,18 +261,14 @@ int BinTree::getHeightHelper(const Node *goal) const
 	{
 		return 0;
 	}
-	if (goal->left == NULL && goal->right == NULL)
+	int maxLeft, maxRight;
+	maxLeft = getHeightHelper(goal->left);
+	maxRight = getHeightHelper(goal->right);
+	if (maxLeft > maxRight) 
 	{
-		return 1;
+		return maxLeft + 1;
 	}
-	int maxLeft;
-	maxLeft = getHeightHelper(goal->left) + 1;
-	int maxRight;
-	maxRight = getHeightHelper(goal->left) + 1;
-	if (maxLeft > maxRight) {
-		return maxLeft;
-	}
-	return maxRight;
+	return maxRight + 1;
 }
 
 // int main()
