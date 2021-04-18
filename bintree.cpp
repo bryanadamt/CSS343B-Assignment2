@@ -277,13 +277,21 @@ void BinTree::bstreeToArray(NodeData* ndArray[])
 	makeEmpty();
 }
 
-int BinTree::toArrayHelper(Node* curr, NodeData* ndArray[])
+void BinTree::toArrayHelper(Node* curr, NodeData* ndArray[])
 {
 	if (curr != NULL)
 	{
-		toArrayHelper(curr->left);
-		ndArray[0] = curr->data;
-		toArrayHelper(curr->right);
+		toArrayHelper(curr->left, ndArray);
+		int nextAvailablePos;
+		for (int i = 1; i < 100; i++)
+		{
+			if (ndArray[i] == NULL)
+			{
+				nextAvailablePos = i;
+			}
+		}
+		ndArray[nextAvailablePos] = curr->data;
+		toArrayHelper(curr->right, ndArray);
 	}
 }
 
