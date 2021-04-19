@@ -28,17 +28,17 @@ public:
 	bool isEmpty() const; // true if tree is empty, otherwise false
 	void makeEmpty();	  // make the tree empty so isEmpty returns true
 
-	BinTree& operator=(const BinTree &);
-	bool operator==(const BinTree &) const;
-	bool operator!=(const BinTree &) const;
+	BinTree& operator=(const BinTree &); // assignment operator
+	bool operator==(const BinTree &) const; // equality operator
+	bool operator!=(const BinTree &) const; // inequality operator
 
-	bool insert(NodeData *);
-	bool retrieve(const NodeData &, NodeData *&) const;
+	bool insert(NodeData *); // inserts a new Node to the tree
+	bool retrieve(const NodeData &, NodeData *&) const; // retrieve the address of a ND object
 	void displaySideways() const; // provided below, displays the tree sideways
-	int getHeight(const NodeData &) const;
+	int getHeight(const NodeData &) const; // gets the max height of a ndoe in the tree
 
-	void bstreeToArray(NodeData* []);
-	void arrayToBSTree(NodeData* []);
+	void bstreeToArray(NodeData* []); // Fill an array of Nodedata* by using an inorder traversal of the tree.
+	void arrayToBSTree(NodeData* []); // Builds a balanced BinTree from a sorted array of NodeData* leaving the array filled with NULLs.
 private:
 	struct Node
 	{

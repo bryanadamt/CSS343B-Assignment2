@@ -368,7 +368,7 @@ void BinTree::bstreeToArray(NodeData* ndArray[])
 }
 
 //---------------------------- arrayToBSTree -------------------------------------
-// builds a balanced BinTree from a sorted array of NodeData* leaving the array filled with NULLs.
+// Builds a balanced BinTree from a sorted array of NodeData* leaving the array filled with NULLs.
 // Preconditions: NONE
 // Postconditions: A balanced BinTree is created and everything in the array is set to NULL.
 void BinTree::toArrayHelper(Node* curr, NodeData* ndArray[])
