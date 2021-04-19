@@ -367,48 +367,68 @@ void BinTree::bstreeToArray(NodeData* ndArray[])
 	makeEmpty();
 }
 
+//---------------------------- toArrayHelper -------------------------------------
+// Helper fucntion to bsstreeToArray
+// Preconditions: NONE
+// Postconditions: BinTree is deleted, array is filled with the contents of BinTree inorder
+int BinTree::toArrayHelper(Node* curr, NodeData* ndArray[])
+{
+	if (curr != NULL)
+	{
+		int left = toArrayHelper(curr->left, ndArray);
+
+		NodeData *nd = curr->data;
+		ndArray[left + 1] = nd;
+		cout << *ndArray[left + 1] <<endl;
+
+		int right = toArrayHelper(curr->right, ndArray);
+
+		return left + 1 + right;
+	} 
+	else
+	{
+		return 0;
+	}
+}
+
 //---------------------------- arrayToBSTree -------------------------------------
 // Builds a balanced BinTree from a sorted array of NodeData* leaving the array filled with NULLs.
 // Preconditions: NONE
 // Postconditions: A balanced BinTree is created and everything in the array is set to NULL.
-void BinTree::toArrayHelper(Node* curr, NodeData* ndArray[])
+void BinTree::arrayToBSTree(NodeData* [])
 {
-	if (curr != NULL)
-	{
-		toArrayHelper(curr->left, ndArray);
-		int nextAvailablePos;
-		for (int i = 1; i < 100; i++)
-		{
-			if (ndArray[i] == NULL)
-			{
-				nextAvailablePos = i;
-			}
-		}
-		ndArray[nextAvailablePos] = curr->data;
-		toArrayHelper(curr->right, ndArray);
-	}
+
 }
 
-int main()
+//---------------------------- toBSTreeHelper -------------------------------------
+// Helper function to arrayToBSTree
+// Preconditions: NONE
+// Postconditions: A balanced BinTree is created and everything in the array is set to NULL.
+void BinTree::toBSTreeHelper(Node* curr, NodeData* ndArray[])
 {
-	BinTree T, TA, TB;
-	NodeData *a = new NodeData("a");
-	NodeData *b = new NodeData("b");
-	NodeData *c = new NodeData("c");
-	NodeData *d = new NodeData("d");
-	NodeData *e = new NodeData("e");
-	NodeData *f = new NodeData("f");
 
-	T.insert(e);
-	T.insert(f);
-	T.insert(c);
-	T.insert(d);
-	T.insert(b);
-	T.insert(a);
-	cout << T << endl;
-
-	T.displaySideways();
-
-	NodeData *temp;
-	NodeData ace("c");
 }
+
+// int main()
+// {
+// 	BinTree T, TA, TB;
+// 	NodeData *a = new NodeData("a");
+// 	NodeData *b = new NodeData("b");
+// 	NodeData *c = new NodeData("c");
+// 	NodeData *d = new NodeData("d");
+// 	NodeData *e = new NodeData("e");
+// 	NodeData *f = new NodeData("f");
+
+// 	T.insert(e);
+// 	T.insert(f);
+// 	T.insert(c);
+// 	T.insert(d);
+// 	T.insert(b);
+// 	T.insert(a);
+// 	cout << T << endl;
+
+// 	T.displaySideways();
+
+// 	NodeData *temp;
+// 	NodeData ace("c");
+// }

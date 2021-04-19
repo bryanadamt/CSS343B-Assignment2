@@ -77,8 +77,8 @@ int main() {
 		cout << "T == dup?    " << (T == dup ? "equal" : "not equal") << endl;
 		dup = T;
 
-		// // somewhat test bstreeToArray and arrayToBSTree
-		// T.bstreeToArray(ndArray);
+		// somewhat test bstreeToArray and arrayToBSTree
+		T.bstreeToArray(ndArray);
 		// T.arrayToBSTree(ndArray);
 		T.displaySideways();
 
