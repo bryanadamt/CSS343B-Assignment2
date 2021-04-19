@@ -46,31 +46,56 @@ void BinTree::sideways(Node* current, int level) const
 	}
 }
 
+//---------------------------- BinTree() -------------------------------------
+// Default Constructor
+// Preconditions: NONE
+// Postconditions: Allocate memory for a BinTree object
+
 BinTree::BinTree()
 {
 	root = NULL;
 }
 
+//---------------------------- BinTree(Bintree &) -------------------------------------
+// Copy Constructor
+// Preconditions: There has to be another BinTree to copy
+// Postconditions: Create a deep copy for a BinTree object.
 BinTree::BinTree(const BinTree &toCopy)
 {
 	*this = toCopy;
 }
 
+//---------------------------- ~BinTree -------------------------------------
+// Destructor
+// Preconditions: There has to be a BinTree object
+// Postconditions: BinTree object is deleted completely
 BinTree::~BinTree()
 {
 	makeEmpty();
 }
 
+//---------------------------- isEmpty -------------------------------------
+// Checks is BinTree object is empty
+// Preconditions: There has to be a BinTree object
+// Postconditions: BinTree is unchanged
 bool BinTree::isEmpty() const 
 {
 	return root == NULL;
 }
 
+//---------------------------- makeEmpty -------------------------------------
+// Completely deletes current BinTree object
+// Preconditions: There has to be a BinTree object
+// Postconditions: BinTree object is deleted completely
 void BinTree::makeEmpty() 
 {
 	makeEmptyHelper(root);
 }
 
+//---------------------------- makeEmptyHelper -------------------------------------
+// Helper function to makeEmpty
+// Preconditions: There has to be a BinTree
+// Postconditions: BinTree deleted
 void BinTree::makeEmptyHelper(Node*& curNode)
 {
 	if (curNode != NULL)
@@ -85,6 +110,10 @@ void BinTree::makeEmptyHelper(Node*& curNode)
 	}
 }
 
+//---------------------------- operator= -------------------------------------
+// Overload assignment operator
+// Preconditions: There has to be another BinTree
+// Postconditions: The current BinTree is a deep copy of the other BinTree
 BinTree& BinTree::operator=(const BinTree &toCopy)
 {
 	if (root != toCopy.root)
@@ -95,6 +124,10 @@ BinTree& BinTree::operator=(const BinTree &toCopy)
 	return *this;
 }
 
+//---------------------------- assignHelper -------------------------------------
+// Helper function for operator=
+// Preconditions: There has to be another BinTree
+// Postconditions: The current BinTree is a deep copy of the other BinTree
 void BinTree::assignHelper(Node*& curr, Node* toCopy) const
 {
 	if (toCopy != NULL)
@@ -114,16 +147,28 @@ void BinTree::assignHelper(Node*& curr, Node* toCopy) const
 	}
 }
 
+//---------------------------- operator== -------------------------------------
+// Overload equality operator
+// Preconditions: There has to be 2 BinTree objects
+// Postconditions: BinTree is unchanged
 bool BinTree::operator==(const BinTree &toCopy) const 
 {
 	return equalityHelper(root, toCopy.root);
 }
 
+//---------------------------- operator!= -------------------------------------
+// Overload inequality operator
+// Preconditions: There has to be 2 BinTree objects
+// Postconditions: BinTree is unchanged
 bool BinTree::operator!=(const BinTree &toCopy) const 
 {
 	return !equalityHelper(root, toCopy.root);
 }
 
+//---------------------------- equalityHelper -------------------------------------
+// Helper function to operator==
+// Preconditions: There has to be 2 BinTree objects
+// Postconditions: BinTree
 bool BinTree::equalityHelper(const Node* curr, const Node* toCompare) const 
 {
 	if (curr == NULL && toCompare == NULL)
@@ -148,6 +193,10 @@ bool BinTree::equalityHelper(const Node* curr, const Node* toCompare) const
 	return (equalityHelper(curr->left, toCompare->left) && equalityHelper(curr->right, toCompare->right));
 }
 
+//---------------------------- operator<< -------------------------------------
+// Overload << operator
+// Preconditions: NONE
+// Postconditions: NONE
 ostream& operator<<(ostream& out, const BinTree& toPrint)
 {
 	toPrint.outHelper(toPrint.root);
@@ -155,6 +204,10 @@ ostream& operator<<(ostream& out, const BinTree& toPrint)
 	return out;
 }
 
+//---------------------------- outHelper -------------------------------------
+// Helper function to operator<<
+// Preconditions: NONE
+// Postconditions: NONE
 void BinTree::outHelper(const Node* curr) const
 {
 	if (curr != NULL)
@@ -165,11 +218,21 @@ void BinTree::outHelper(const Node* curr) const
 	}
 }
 
+//---------------------------- insert -------------------------------------
+// Inserts a new Node to the BinTree
+// Preconditions: There has to be a NodeData object
+// Postconditions: BinTree is changed if a new Node is inserted
+// 				   stays the same if it doesn't
 bool BinTree::insert(NodeData* toInsert) 
 {
 	return insertHelper(root, toInsert);
 }
 
+//---------------------------- insertHelper -------------------------------------
+// Helper function to insert
+// Preconditions: There has to be a NodeData object
+// Postconditions: BinTree is changed if a new Node is inserted
+// 				   stays the same if it doesn't
 bool BinTree::insertHelper(Node*& curr, NodeData*& toInsert) 
 {
 	if (curr == NULL)
@@ -195,12 +258,23 @@ bool BinTree::insertHelper(Node*& curr, NodeData*& toInsert)
 	return true;
 }
 
+//---------------------------- retrieve -------------------------------------
+// Retrieve the NodeData* of a given object in the tree (via pass-by-reference parameter)
+// and to report whether the object is found (true or false).
+// Preconditions: There has to be a NodeData object
+// Postconditions: address is updated with the address of the 
+//  			   NodeData if it's found.
 bool BinTree::retrieve(const NodeData &toFind, NodeData *&address) const
 {
 	retrieveHelper(toFind, address, root);
 	return (address != NULL);
 }
 
+//---------------------------- retrieveHelper -------------------------------------
+// Helper Fucntion to retrieve function
+// Preconditions: There has to be a NodeData object
+// Postconditions: address is updated with the address of the 
+//  			   NodeData if it's found.
 void BinTree::retrieveHelper(const NodeData &toFind, NodeData *&address, Node *curr) const
 {
 	if (curr != NULL) {
@@ -223,6 +297,10 @@ void BinTree::retrieveHelper(const NodeData &toFind, NodeData *&address, Node *c
 	}
 }
 
+//---------------------------- getheight -------------------------------------
+// Function to find the maximum height of a given  value in the tree
+// Preconditions: There has to be a NodeData object
+// Postconditions: BinTree is unchanged
 int BinTree::getHeight(const NodeData &nodeToFind) const 
 {
 	NodeData *address;
@@ -236,6 +314,10 @@ int BinTree::getHeight(const NodeData &nodeToFind) const
 	return getHeightHelper(goal);
 }
 
+//---------------------------- nodeFinder -------------------------------------
+// Attempt to find a node in the tree, given a NodeData
+// Preconditions: There has to be a NodeData object
+// Postconditions: BinTree is unchanged
 void BinTree::nodeFinder(Node* curr, const NodeData* address, Node*& goal) const
 {
 	if (goal == NULL)
@@ -255,6 +337,10 @@ void BinTree::nodeFinder(Node* curr, const NodeData* address, Node*& goal) const
 	}
 }
 
+//---------------------------- getheightHelper -------------------------------------
+// Helper fucntion to getHeight
+// Preconditions: There has to be a NodeData object
+// Postconditions: BinTree is unchanged
 int BinTree::getHeightHelper(const Node *goal) const
 {
 	if (goal == NULL)
@@ -271,12 +357,20 @@ int BinTree::getHeightHelper(const Node *goal) const
 	return maxRight + 1;
 }
 
+//---------------------------- bstreeToArray -------------------------------------
+// Fill an array of Nodedata* by using an inorder traversal of the tree.
+// Preconditions: NONE
+// Postconditions: BinTree is deleted, array is filled with the contents of BinTree inorder
 void BinTree::bstreeToArray(NodeData* ndArray[]) 
 {
 	toArrayHelper(root, ndArray);
 	makeEmpty();
 }
 
+//---------------------------- arrayToBSTree -------------------------------------
+// builds a balanced BinTree from a sorted array of NodeData* leaving the array filled with NULLs.
+// Preconditions: NONE
+// Postconditions: A balanced BinTree is created and everything in the array is set to NULL.
 void BinTree::toArrayHelper(Node* curr, NodeData* ndArray[])
 {
 	if (curr != NULL)
