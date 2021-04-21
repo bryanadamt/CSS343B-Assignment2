@@ -376,7 +376,12 @@ int BinTree::toArrayHelper(Node* curr, NodeData* ndArray[])
 	if (curr != NULL)
 	{
 		int left = toArrayHelper(curr->left, ndArray);
-		ndArray[left] = curr->data;
+		
+		NodeData* tempND = new NodeData;
+		tempND = curr->data;
+		curr->data = NULL;
+		ndArray[left] = tempND;
+
 		int right = toArrayHelper(curr->right, ndArray + left + 1);
 
 		return left + 1 + right;
@@ -394,16 +399,13 @@ void BinTree::arrayToBSTree(NodeData* ndArray[])
 	// Finds how big the array actually is
 	for (int i = 0; i < 100; i++)
 	{
-		
 		if (ndArray[i] == NULL)
 		{
-			end = i + 1;
+			end = i;
 			break;
 		}
 	}
-
-	// makeEmpty(); // make sure we are working with an empty tree
-	toBSTreeHelper(root, ndArray, 0, end);
+	toBSTreeHelper(root, ndArray, 0, end - 1);
 }
 
 //---------------------------- toBSTreeHelper -------------------------------------
@@ -412,30 +414,16 @@ void BinTree::arrayToBSTree(NodeData* ndArray[])
 // Postconditions: A balanced BinTree is created and everything in the array is set to NULL.
 void BinTree::toBSTreeHelper(Node* curr, NodeData* ndArray[], int start, int end)
 {
-	int mid = (end + start) / 2;
-	Node *tempNode;
-
-	if (mid == 0)
+	if (start <= end) 
 	{
-		cout << "mid0" <<endl;
-		tempNode->data = ndArray[start];
-		cout << "mid02" <<endl;
-		ndArray[start] = NULL;
+		int mid = (end + start) / 2;
+		NodeData *tempNode;
+		tempNode = ndArray[mid];
+		insert(tempNode);
+
+		toBSTreeHelper(curr, ndArray, start, mid - 1);
+		toBSTreeHelper(curr, ndArray, mid + 1, end);
 	} 
-	else 
-	{
-		cout << "mid" <<endl;
-		tempNode->data = ndArray[mid];
-		cout << "midw" <<endl;
-		ndArray[mid] = NULL;
-	}
-
-	cout << "her" <<endl;
-	insert(tempNode->data);
-	cout << "midasdasd" <<endl;
-
-	toBSTreeHelper(curr->left, ndArray, start, end - 1);
-	toBSTreeHelper(curr->left, ndArray, start + 1, end);
 }
 
 int main()
@@ -461,5 +449,7 @@ int main()
 	NodeData *temp;
 	NodeData* abb[10];
 	T.bstreeToArray(abb);
+
 	T.arrayToBSTree(abb);
+	T.displaySideways();
 }
