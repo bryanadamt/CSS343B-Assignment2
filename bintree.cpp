@@ -380,6 +380,7 @@ int BinTree::toArrayHelper(Node* curr, NodeData* ndArray[])
 		NodeData* tempND = new NodeData;
 		tempND = curr->data;
 		curr->data = NULL;
+		
 		ndArray[left] = tempND;
 		tempND = NULL;
 
