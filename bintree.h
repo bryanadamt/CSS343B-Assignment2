@@ -61,7 +61,7 @@ private:
 	void nodeFinder(Node *, const NodeData * , Node *&) const;
 	int getHeightHelper(const Node *) const;
 	int toArrayHelper(Node *, NodeData* []);
-	void toBSTreeHelper(Node *, NodeData* []);
+	void toBSTreeHelper(Node *, NodeData* [], int, int);
 };
 
 #endif
