@@ -381,6 +381,7 @@ int BinTree::toArrayHelper(Node* curr, NodeData* ndArray[])
 		tempND = curr->data;
 		curr->data = NULL;
 		ndArray[left] = tempND;
+		tempND = NULL;
 
 		int right = toArrayHelper(curr->right, ndArray + left + 1);
 
@@ -417,39 +418,18 @@ void BinTree::toBSTreeHelper(Node* curr, NodeData* ndArray[], int start, int end
 	if (start <= end) 
 	{
 		int mid = (end + start) / 2;
+
 		NodeData *tempNode;
 		tempNode = ndArray[mid];
 		insert(tempNode);
 
+		ndArray[mid] = NULL;
+
 		toBSTreeHelper(curr, ndArray, start, mid - 1);
 		toBSTreeHelper(curr, ndArray, mid + 1, end);
 	} 
-}
-
-int main()
-{
-	BinTree T, TA, TB;
-	NodeData *a = new NodeData("a");
-	NodeData *b = new NodeData("b");
-	NodeData *c = new NodeData("c");
-	NodeData *d = new NodeData("d");
-	NodeData *e = new NodeData("e");
-	NodeData *f = new NodeData("f");
-
-	T.insert(e);
-	T.insert(f);
-	T.insert(c);
-	T.insert(d);
-	T.insert(b);
-	T.insert(a);
-	cout << T << endl;
-
-	T.displaySideways();
-
-	NodeData *temp;
-	NodeData* abb[10];
-	T.bstreeToArray(abb);
-
-	T.arrayToBSTree(abb);
-	T.displaySideways();
+	else
+	{
+		curr = NULL;
+	}
 }

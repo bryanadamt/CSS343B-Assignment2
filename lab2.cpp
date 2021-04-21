@@ -79,7 +79,7 @@ int main() {
 
 		// somewhat test bstreeToArray and arrayToBSTree
 		T.bstreeToArray(ndArray);
-		// T.arrayToBSTree(ndArray);
+		T.arrayToBSTree(ndArray);
 		T.displaySideways();
 
 		T.makeEmpty();                  // empty out the tree
