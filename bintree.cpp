@@ -62,6 +62,7 @@ BinTree::BinTree()
 // Postconditions: Create a deep copy for a BinTree object.
 BinTree::BinTree(const BinTree &toCopy)
 {
+	root = NULL;
 	*this = toCopy;
 }
 
